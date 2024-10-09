@@ -37,6 +37,21 @@ resource "aws_iam_role" "role" {
       },
     ]
   })
+  inline_policy {
+    name = "${var.tool_name}-inline-policy"
+
+    policy = jsonencode({
+      Version = "2012-10-17"
+      Statement = [
+        {
+          Action   = var.policy_resource_list;
+          //["ec2:Describe*"]
+          Effect   = "Allow"
+          Resource = "*"
+        },
+      ]
+    })
+  }
 
   tags = {
     tag-key = "${var.tool_name}-role"
@@ -46,5 +61,23 @@ resource "aws_iam_role" "role" {
 resource "aws_iam_instance_profile" "instance_profile" {
   name = "${var.tool_name}-role"
   role = aws_iam_role.role.name
+}
+
+resource "aws_iam_role" "test_role" {
+  name = "test_role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
 }
 
