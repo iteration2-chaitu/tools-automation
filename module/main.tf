@@ -6,7 +6,7 @@ resource "aws_instance" "instance"{
   tags = {
     Name = var.tool_name
   }
-
+iam_instance_profile = aws_iam_instance_profile.instance_profile.name
 
 
 }
