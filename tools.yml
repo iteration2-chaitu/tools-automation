@@ -1,6 +1,6 @@
 - name : Setup a given tool
   hosts: all
-  becomes: yes
+  become: yes
   roles :
     - "{{tool_name}}"
 
