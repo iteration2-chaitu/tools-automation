@@ -1,9 +1,7 @@
 [Unit]
 Description = Prometheus server Service
-
 [Service]
 User=bin
-
 ExecStart=/opt/prometheus-{{ version }}.linux-amd64/prometheus
 SyslogIdentifier=prometheus
 
