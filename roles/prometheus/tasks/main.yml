@@ -1,3 +1,4 @@
+#adding  the prometheus
 - name : Download the prometheus
   ansible.builtin.unarchive:
     src:  https://github.com/prometheus/prometheus/releases/download/v{{ version }}/prometheus-2.54.1.linux-amd64.tar.gz
