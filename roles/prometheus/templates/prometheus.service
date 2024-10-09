@@ -3,9 +3,7 @@ Description = Prometheus server Service
 
 [Service]
 User=bin
-#Environment=DB_HOST="mysql-{{ env }}-yml.chaitus.shop"
-#Environment=DB_HOST="mysql-{{ env }}.chaitus.shop"
-#"mysql-dev-yml.chaitus.shop"
+
 ExecStart=/opt/prometheus-{{ version }}.linux-amd64/prometheus
 SyslogIdentifier=prometheus
 
