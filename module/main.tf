@@ -11,13 +11,23 @@ iam_instance_profile = aws_iam_instance_profile.instance_profile.name
 
 }
 
-resource "aws_route53_record" "instance"{
+resource "aws_route53_record" "record"{
   #  ami = ""
   #  instance_type = ""
   name =  var.tool_name
   type = "A"
   zone_id = var.zone_id
   records = [aws_instance.instance.public_ip]
+  ttl = 30
+}
+
+resource "aws_route53_record" "record-internal"{
+  #  ami = ""
+  #  instance_type = ""
+  name =  "${var.tool_name}-internal"
+  type = "A"
+  zone_id = var.zone_id
+  records = [aws_instance.instance.private_ip]
   ttl = 30
 }
 
