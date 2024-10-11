@@ -6,7 +6,7 @@ resource "aws_instance" "instance"{
   tags = {
     Name = var.tool_name
     monitor = "yes"
-    env = var.env
+    //env = var.env
   }
 iam_instance_profile = aws_iam_instance_profile.instance_profile.name
 

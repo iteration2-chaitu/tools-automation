@@ -10,7 +10,4 @@ variable "tools"{
 variable "zone_id" {
   default = "Z1029901SH2BJPKJS7Q3"
 }
-variable "env" {
-  default = "dev"
-}
 
