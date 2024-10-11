@@ -11,3 +11,8 @@ scrape_configs:
           - name: tag:monitor
             values: ["yes","true"]
 
+    relabel_configs:
+      - source_labels: [ __meta_ec2_tag_Name ]
+        target_label: Name
+      - source_labels: [ __meta_ec2_tag_env ]
+        target_label: env
