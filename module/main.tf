@@ -1,20 +1,22 @@
-resource "aws_instance" "instance"{
-  ami = data.aws_ami.ami.image_id
-  instance_type = var.instance_type
+resource "aws_instance" "instance" {
+  ami                    = data.aws_ami.ami.image_id
+  instance_type          = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.selected.id]
   //iam_instance_profile = ""
-  tags = {
-    Name = var.tool_name
+  tags                   = {
+    Name    = var.tool_name
     monitor = "yes"
     //env = var.env
   }
-iam_instance_profile = aws_iam_instance_profile.instance_profile.name
+  iam_instance_profile = aws_iam_instance_profile.instance_profile.name
 
-  spot_options{
-    instance_interruption_behaviour = "stop"
-    spot_instance_type              = "persistent"
+  instance_market_options
+  {
+    spot_options {
+      instance_interruption_behaviour = "stop"
+      spot_instance_type              = "persistent"
+    }
   }
-
 }
 
 resource "aws_route53_record" "record"{
