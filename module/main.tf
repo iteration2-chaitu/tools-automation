@@ -10,6 +10,10 @@ resource "aws_instance" "instance"{
   }
 iam_instance_profile = aws_iam_instance_profile.instance_profile.name
 
+  spot_options{
+    instance_interruption_behaviour = "stop"
+    spot_instance_type              = "persistent"
+  }
 
 }
 
