@@ -5,13 +5,13 @@ resource "aws_instance" "instance" {
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
   //iam_instance_profile = ""
 
-#  instance_market_options {
-#    market_type= "spot"
-#    spot_options {
-#      instance_interruption_behavior = "stop"
-#      spot_instance_type              = "persistent"
-#    }
-#  }
+  instance_market_options {
+    market_type= "spot"
+    spot_options {
+      instance_interruption_behavior = "stop"
+      spot_instance_type              = "persistent"
+    }
+  }
 
   tags                   = {
     Name    = var.tool_name
