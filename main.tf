@@ -8,10 +8,4 @@ module "tools" {
   policy_resource_list = each.value["policy_resource_list"]
 }
 
-#variable "tools"{
-#  default = {
-#    prometheus = {
-#      instance_type = "t3.small"
-#    }
-#  }
-#}
+
