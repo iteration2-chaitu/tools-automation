@@ -56,7 +56,7 @@ resource "aws_iam_role" "role" {
       },
     ]
   })
-  inline_policy {
+  aws_iam_role_policy {
     name = "${var.tool_name}-inline-policy"
 
     policy = jsonencode({
