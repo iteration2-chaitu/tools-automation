@@ -26,6 +26,7 @@ resource "aws_route53_record" "record"{
   zone_id = var.zone_id
   records = [aws_instance.instance.public_ip]
   ttl = 30
+  depends_on = [aws_instance.instance]
 }
 
 resource "aws_route53_record" "record-internal"{
@@ -34,6 +35,7 @@ resource "aws_route53_record" "record-internal"{
   zone_id = var.zone_id
   records = [aws_instance.instance.private_ip]
   ttl = 30
+  depends_on = [aws_instance.instance]
 }
 
 #resource "aws_iam_role" "role" {
