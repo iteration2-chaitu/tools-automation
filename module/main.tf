@@ -19,6 +19,12 @@ resource "aws_instance" "instance" {
     //monitor = "yes"
     //env = var.env
   }
+
+  lifecycle{
+    ignore_changes = [
+     ami,
+    ]
+  }
 }
 
 resource "aws_route53_record" "record"{
